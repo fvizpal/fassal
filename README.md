@@ -4,7 +4,7 @@
 ## Getting Started
 1. Clone the repository: 
 ```bash
-git clone https://github.com/fvizpal/aajao.git
+git clone https://github.com/fvizpal/krishi-bazaar.git
 ```
 
 2. Install dependencies:
