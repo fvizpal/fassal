@@ -22,6 +22,8 @@ import {
 // } from "@/data/two-factor-confirmation";
 import { getUserByEmail } from "@/lib/data/user";
 
+const domain = process.env.NEXT_PUBLIC_APP_URL;
+
 export const login = async (
   values: z.infer<typeof LoginSchema>,
   callbackUrl?: string | null,
@@ -45,10 +47,24 @@ export const login = async (
       existingUser.email,
     );
 
-    await sendVerificationEmail(
-      verificationToken.email,
-      verificationToken.token,
-    );
+    const token = verificationToken.token;
+    const confirmLink = `${domain}/auth/new-verification?token=${token}`;
+
+    const emailContent = {
+      subject: 'Email verification | From Krishi Bazaar',
+      body: `
+        <div>
+          <h2>Welcome to Krishi Bazaar 🚀</h2>
+          <div style="border: 1px solid #ccc; padding: 10px; background-color: #f8f8f8;">
+            <h3>Email Verification</h3>
+            <p>Verify your email to successfully login. Click on the following link</p>
+            <a href="${confirmLink}" target="_blank" rel="noopener noreferrer">Link</a>!</p>
+          </div>
+        </div>
+      `,
+    }
+
+    await sendVerificationEmail(emailContent, verificationToken.email);
 
     return { success: "Confirmation email sent!" };
   }
