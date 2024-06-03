@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 
-import { LoginSchema } from "@/schemas";
+
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -19,6 +19,10 @@ import {
 } from "@/components/ui/form";
 import { CardWrapper } from "./cardWrapper";
 import { Button } from "@/components/ui/button";
+import { FormError } from "../shared/formError";
+import { FormSuccess } from "../shared/formSuccess";
+import { LoginSchema } from "@/schemas";
+import { login } from "@/lib/actions/auth/login";
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
@@ -55,10 +59,6 @@ export const LoginForm = () => {
           if (data?.success) {
             form.reset();
             setSuccess(data.success);
-          }
-
-          if (data?.twoFactor) {
-            setShowTwoFactor(true);
           }
         })
         .catch(() => setError("Something went wrong"));
