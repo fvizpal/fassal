@@ -16,7 +16,7 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import {
   generateVerificationToken,
   // generateTwoFactorToken
-} from "@/lib/actions/token";
+} from "@/lib/actions/auth/token";
 // import {
 //   getTwoFactorConfirmationByUserId
 // } from "@/data/two-factor-confirmation";

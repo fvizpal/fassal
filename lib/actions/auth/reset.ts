@@ -4,7 +4,7 @@ import * as z from "zod";
 
 import { ResetSchema } from "@/schemas";
 import { getUserByEmail } from "@/lib/data/user";
-import { generatePasswordResetToken } from "../token";
+import { generatePasswordResetToken } from "./token";
 import { sendVerificationEmail } from "@/lib/mail";
 
 const domain = process.env.NEXT_PUBLIC_APP_URL;

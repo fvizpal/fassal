@@ -8,7 +8,7 @@ import { RegisterSchema } from "@/schemas";
 
 import { sendVerificationEmail } from "@/lib/mail";
 import { getUserByEmail } from "@/lib/data/user";
-import { generateVerificationToken } from "../token";
+import { generateVerificationToken } from "./token";
 
 const domain = process.env.NEXT_PUBLIC_APP_URL;
 
