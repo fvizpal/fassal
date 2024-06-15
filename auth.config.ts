@@ -24,10 +24,10 @@ export default {
           const user = await getUserByEmail(email);
           if (!user || !user.password) return null;
 
-          const passwordsMatch = await bcrypt.compare(
-            password,
-            user.password, // hashed
-          );
+          // const passwordsMatch = await bcrypt.compare(
+          //   password,
+          //   user.password, // hashed
+          // );
 
           if (passwordsMatch) return user;
         }

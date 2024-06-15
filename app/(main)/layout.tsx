@@ -1,10 +1,13 @@
+import Sidebar from "@/components/shared/sidebar";
+
 const MainLayout = ({
   children
 }: {
   children: React.ReactNode
 }) => {
   return (
-    <div className="h-full mt-10 flex items-center justify-center">
+    <div className="h-full flex">
+      <Sidebar />
       {children}
     </div>
   );
