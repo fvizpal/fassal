@@ -76,7 +76,7 @@ export const DashboardCompo = () => {
             </p>
           </CardContent>
         </Card>
-        <Card x-chunk="dashboard-01-chunk-3">
+        {/* <Card x-chunk="dashboard-01-chunk-3">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Now</CardTitle>
             <Activity className="h-4 w-4 text-muted-foreground" />
@@ -87,7 +87,7 @@ export const DashboardCompo = () => {
               +201 since last hour
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
       <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         <Card

@@ -15,6 +15,7 @@ import { Button } from '../ui/button'
 import { CircleUser, Menu, Package2, Search } from 'lucide-react'
 import { Input } from '../ui/input'
 import { ModeToggle } from './modeToggle'
+import Image from 'next/image'
 
 const Navbar = () => {
   return (
@@ -24,6 +25,7 @@ const Navbar = () => {
           href="#"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
+          <Image src={"/assets/images/logo1.png"} alt='logo' height={40} width={40} />
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Krishi Bazaar</span>
         </Link>
@@ -75,7 +77,8 @@ const Navbar = () => {
               href="#"
               className="flex items-center gap-2 text-lg font-semibold"
             >
-              <Package2 className="h-6 w-6" />
+              <Image src={"/assets/images/logo1.png"} alt='logo' height={40} width={40} />
+              {/* <Package2 className="h-6 w-6" /> */}
               <span className="sr-only">Acme Inc</span>
             </Link>
             <Link href="#" className="hover:text-foreground">
