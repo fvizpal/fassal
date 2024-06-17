@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 export type ModalType =
   | "UserSettings"
+  | "CreateCommodity"
 
 interface ModalStore {
   type: ModalType | null

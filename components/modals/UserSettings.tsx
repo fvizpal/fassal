@@ -6,6 +6,7 @@ const UserSettings = () => {
 
   const { isOpen, type, onClose, onOpen } = useModal()
 
+  // const isModalOpen = true;
   const isModalOpen = isOpen && type === 'UserSettings';
 
 
