@@ -1,4 +1,4 @@
-import { DashboardCompo } from './compo'
+import { DashboardCompo } from './_components/compo'
 
 const Dashboard = () => {
   return (
