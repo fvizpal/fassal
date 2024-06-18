@@ -27,6 +27,10 @@ const navLinks = [
     label: "Dashboard"
   },
   {
+    route: "/trade",
+    label: "Trade"
+  },
+  {
     route: "/orders",
     label: "Orders"
   },
