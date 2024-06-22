@@ -1,21 +1,26 @@
 import { useModal } from "@/hooks/useModalStore"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "../ui/dialog"
 
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Commodity name is required" }),
-  imageUrl: z.string().min(1, { message: "Commodity image is required" }),
-  quantity: z.number(),
-  expectedPrice: z.number(),
+  // imageUrl: z.string().min(1, { message: "Commodity image is required" }),
+  quantity: z.string().min(1, { message: "Quantity is required" }),
+  expectedPrice: z.string().min(1, { message: "Enter expected price" }),
 })
 
 const CreateCommodity = () => {
+
+  const router = useRouter();
 
   const { isOpen, type, onClose } = useModal();
 
@@ -23,7 +28,7 @@ const CreateCommodity = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      imageUrl: "",
+      // imageUrl: "",
       quantity: "",
       expectedPrice: "",
     }
@@ -32,8 +37,27 @@ const CreateCommodity = () => {
   const isModalOpen = isOpen && type == "CreateCommodity";
   // const isModalOpen = true;
 
+  const isLoading = form.formState.isSubmitting;
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await axios.post("/api/trade/farmer", values);
+
+      form.reset();
+      router.refresh();
+      onClose();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleClose = () => {
+    form.reset();
+    onClose();
+  }
+
   return (
-    <Dialog open={isModalOpen} onOpenChange={() => onClose()} >
+    <Dialog open={isModalOpen} onOpenChange={handleClose} >
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
@@ -41,7 +65,7 @@ const CreateCommodity = () => {
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <form>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
               name="name"
@@ -51,6 +75,7 @@ const CreateCommodity = () => {
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -59,10 +84,11 @@ const CreateCommodity = () => {
               name="quantity"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Commodity name</FormLabel>
+                  <FormLabel>Quantity</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -71,13 +97,20 @@ const CreateCommodity = () => {
               name="expectedPrice"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Commodity name</FormLabel>
+                  <FormLabel>Price</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
+
+            <DialogFooter className="mt-5">
+              <Button disabled={isLoading} className="w-full">
+                Create
+              </Button>
+            </DialogFooter>
           </form>
         </Form>
       </DialogContent>
