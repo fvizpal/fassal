@@ -45,7 +45,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     body: `
       <div>
         <h2>Welcome to Krishi Bazaar 🚀</h2>
-        <div style="border: 1px solid #ccc; padding: 10px; background-color: #f8f8f8;">
+        <div>
           <h3>Email Verification</h3>
           <p>Verify your email to successfully login. Click on the following link</p>
           <a href="${confirmLink}" target="_blank" rel="noopener noreferrer">Link</a>!</p>

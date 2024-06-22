@@ -2,6 +2,7 @@ import NextAuth from "next-auth"
 import authConfig from "./auth.config"
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "./lib/db";
+import { getUserById } from "./lib/data/user";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
@@ -20,11 +21,42 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token }) {
       if (!token.sub) return token;
 
+      const existingUser = await getUserById(token.sub);
+
+      if (!existingUser) return token
+
+      token.name = existingUser.name
+      token.email = existingUser.email
+      token.role = existingUser.role
+
 
       return token;
     },
     async session({ token, session }) {
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
+      }
+
+      // if(token.role && session.user) {
+      //   session.user.role = token.role
+      // }
+
+      if (session.user) {
+        session.user.name = token.name;
+        session.user.email = token.email as string;
+      }
+
       return session;
+    },
+    async signIn({ user, account }) {
+
+      if (account?.provider !== 'credentials') return true;
+
+      const existingUser = await getUserById(user.id as string);
+
+      if (!existingUser?.emailVerified) return false;
+
+      return true;
     }
   },
   adapter: PrismaAdapter(db),

@@ -18,8 +18,9 @@ import { CircleUser, Menu, Package2, Search } from 'lucide-react'
 import { Input } from '../ui/input'
 import { ModeToggle } from './modeToggle'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { logout } from '@/lib/actions/auth/logout'
 
 const navLinks = [
   {
@@ -46,6 +47,11 @@ const navLinks = [
 
 const Navbar = () => {
   const pathname = usePathname();
+
+  const onClick = () => {
+    logout();
+  }
+
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -138,7 +144,7 @@ const Navbar = () => {
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem onClick={onClick}>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
