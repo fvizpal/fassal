@@ -1,7 +1,46 @@
 import { db } from '@/lib/db'
 
-import CreateCommodityCard from './_components/createCommodityCard'
 import CreateButton from './_components/createButton'
+import CommodityCard from './_components/commodityCard'
+import TradeLivePrice from './_components/tradeLivePrice'
+
+const commoditiesForSale = [
+  {
+    id: "qwe43",
+    name: "ABC",
+    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+  },
+  {
+    id: "23d4",
+    name: "ABC",
+    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+  },
+  {
+    id: "q5f4",
+    name: "ABC",
+    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+  },
+  {
+    id: "3f5y",
+    name: "ABC",
+    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+  },
+  {
+    id: "2345ft",
+    name: "ABC",
+    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+  },
+  {
+    id: "34t6",
+    name: "ABC",
+    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+  },
+  {
+    id: "w454",
+    name: "ABC",
+    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+  },
+]
 
 const Trade = async () => {
 
@@ -13,15 +52,22 @@ const Trade = async () => {
 
   return (
     <section>
-      {/* //   {commoditiesForSale.map((commodity) => (
-    //     <div key={commodity.id}>
-    //       <CreateCommodityCard
-    //         id={commodity.id}
-    //         name={commodity.name}
-    //         imageUrl={commodity.imageUrl}
-    //       />
-    //     </div>
-    //   ))} */}
+      <div className='flex'>
+        <div className='w-full'>
+          {commoditiesForSale.map((commodity) => (
+            <div key={commodity.id}
+              className=' m-5'
+            >
+              <CommodityCard
+                id={commodity.id}
+                name={commodity.name}
+                imageUrl={commodity.imageUrl}
+              />
+            </div>
+          ))}
+        </div>
+        <TradeLivePrice />
+      </div>
       <div className=''>
         <CreateButton />
       </div>

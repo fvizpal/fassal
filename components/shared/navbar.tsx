@@ -60,7 +60,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6">
-      <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+      <nav className="hidden flex-row gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link
           href="/dashboard"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
@@ -75,14 +75,17 @@ const Navbar = () => {
             pathname === link.route;
 
           return (
-            <Link
-              href={link.route}
-              className={cn("text-secondary transition-colors hover:text-foreground",
-                isActive && "text-foreground transition-colors hover:text-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
+            <div>
+              <Link
+                href={link.route}
+                className={cn("text-secondary text-lg transition-colors hover:text-slate-600",
+                  isActive && "text-foreground text-lg transition-colors hover:text-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+              {isActive && <div className='w-auto mt-1 h-1 rounded-md bg-slate-700'></div>}
+            </div>
           )
         })}
       </nav>
