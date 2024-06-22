@@ -21,6 +21,7 @@ import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { logout } from '@/lib/actions/auth/logout'
+import { useCurrentUser } from '@/hooks/authHooks'
 
 const navLinks = [
   {
@@ -48,6 +49,10 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
+
+  const user = useCurrentUser();
+  const name = user?.name
+  const userImage = user?.image
 
   const onClick = () => {
     logout();
@@ -135,16 +140,25 @@ const Navbar = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" size="icon" className="rounded-full">
-              <CircleUser className="h-5 w-5" />
+              {userImage ? (
+                <Image
+                  src={userImage}
+                  alt='user'
+                  height={50}
+                  width={50}
+                  className=' rounded-2xl'
+                />
+              ) : (
+                <CircleUser className="h-5 w-5" />
+              )}
               <span className="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel> {name} </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/settings/general")}
             >Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={onClick}>Logout</DropdownMenuItem>
           </DropdownMenuContent>
