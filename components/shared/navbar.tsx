@@ -47,6 +47,7 @@ const navLinks = [
 
 const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
   const onClick = () => {
     logout();
@@ -141,7 +142,8 @@ const Navbar = () => {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push("/settings/general")}
+            >Settings</DropdownMenuItem>
             <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={onClick}>Logout</DropdownMenuItem>

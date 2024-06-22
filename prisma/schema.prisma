@@ -20,9 +20,10 @@ model User {
   image         String?
   password      String?
   accounts      Account[]
-  role          UserRole  @default(FARMER)
   // Optional for WebAuthn support
   // Authenticator Authenticator[]
+
+  role UserRole @default(FARMER)
 
   commodity Commodity[]
   bids      Bids[]

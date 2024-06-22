@@ -1,5 +1,5 @@
 import { db } from '@/lib/db'
-import React from 'react'
+
 import CreateCommodityCard from './_components/createCommodityCard'
 import CreateButton from './_components/createButton'
 
@@ -22,7 +22,9 @@ const Trade = async () => {
     //       />
     //     </div>
     //   ))} */}
-      <CreateButton />
+      <div className=''>
+        <CreateButton />
+      </div>
     </section >
   )
 }
