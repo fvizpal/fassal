@@ -3,6 +3,7 @@ import { db } from '@/lib/db'
 import CreateButton from './_components/createButton'
 import CommodityCard from './_components/commodityCard'
 import TradeLivePrice from './_components/tradeLivePrice'
+import MobLiveTrade from './_components/MobLiveTrade'
 
 const commoditiesForSale = [
   {
@@ -66,7 +67,12 @@ const Trade = async () => {
             </div>
           ))}
         </div>
-        <TradeLivePrice />
+        <div className='hidden md:block'>
+          <TradeLivePrice />
+        </div>
+        <div className='fixed top-20 right-5 md:hidden'>
+          <MobLiveTrade />
+        </div>
       </div>
       <div className=''>
         <CreateButton />
