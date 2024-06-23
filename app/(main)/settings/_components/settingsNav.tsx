@@ -31,7 +31,7 @@ const SettingsNav = () => {
   const pathname = usePathname()
   return (
     <nav
-      className="grid gap-4 text-sm text-muted-foreground"
+      className="flex md:grid gap-4 text-sm text-muted-foreground"
     >
       {SettingsNavLinks.map((links) => {
         const isActive = (pathname.includes(links.route) && links.route.length > 1) ||

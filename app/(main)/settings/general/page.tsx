@@ -11,13 +11,16 @@ import {
 } from "@/components/ui/card"
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
+import { currentUser } from '@/lib/auth'
 
-const GeneralSettings = () => {
+const GeneralSettings = async () => {
+  const user = await currentUser();
+
   return (
     <div className="grid gap-6">
       <Card x-chunk="dashboard-04-chunk-1">
         <CardHeader>
-          <CardTitle>Store Name</CardTitle>
+          <CardTitle>{user?.name}</CardTitle>
           <CardDescription>
             Used to identify your store in the marketplace.
           </CardDescription>
@@ -33,10 +36,9 @@ const GeneralSettings = () => {
       </Card>
       <Card x-chunk="dashboard-04-chunk-2">
         <CardHeader>
-          <CardTitle>Plugins Directory</CardTitle>
+          <CardTitle>Your Location</CardTitle>
           <CardDescription>
-            The directory within your project, in which your plugins are
-            located.
+            This is your default location. Click edit to change it.
           </CardDescription>
         </CardHeader>
         <CardContent>
