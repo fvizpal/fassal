@@ -52,9 +52,12 @@ const Trade = async () => {
   // })
 
   return (
-    <section>
-      <div className='flex'>
-        <div className='w-full'>
+    <section
+    >
+      <div
+        className='flex '
+      >
+        <div>
           {commoditiesForSale.map((commodity) => (
             <div key={commodity.id}
               className=' m-5'
@@ -67,7 +70,7 @@ const Trade = async () => {
             </div>
           ))}
         </div>
-        <div className='hidden md:block'>
+        <div className='hidden  md:block md:fixed right-4'>
           <TradeLivePrice />
         </div>
         <div className='fixed top-20 right-5 md:hidden'>
