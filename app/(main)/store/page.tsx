@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
-import React from 'react'
 
 const Store = () => {
   return (
@@ -25,6 +24,7 @@ const Store = () => {
         <Button>BUY</Button>
       </CardFooter>
     </Card>
+
   )
 }
 
