@@ -19,12 +19,14 @@ export async function POST(req: Request) {
         imageUrl,
         expectedPrice,
         quantity,
-        location,
         sold: false,
       }
     })
 
-  } catch (error) {
+    return NextResponse.json(commodity)
 
+  } catch (error) {
+    console.log("[TRADE_POST]", error);
+    return new NextResponse("Internal Error", { status: 500 });
   }
 }

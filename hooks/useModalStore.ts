@@ -3,6 +3,8 @@ import { create } from "zustand";
 export type ModalType =
   | "UserSettings"
   | "CreateCommodity"
+  | "DeleteCommodity"
+  | "EditCommodity"
 
 interface ModalStore {
   type: ModalType | null
