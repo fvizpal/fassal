@@ -40,10 +40,10 @@ const EditCommodity = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={() => onClose()}>
-      <DialogHeader>
-        <DialogTitle>Edit commodity</DialogTitle>
-      </DialogHeader>
       <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Edit commodity</DialogTitle>
+        </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="flex items-center justify-center text-center">
