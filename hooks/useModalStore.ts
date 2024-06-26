@@ -7,6 +7,7 @@ export type ModalType =
   | "CreateCommodity"
   | "DeleteCommodity"
   | "EditCommodity"
+  | "PlaceBid"
 
 
 interface ModalData {

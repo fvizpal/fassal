@@ -5,6 +5,7 @@ import UserSettings from "../modals/UserSettings";
 import CreateCommodity from "../modals/CreateCommodity";
 import DeleteCommodity from "../modals/DeleteCommodity";
 import EditCommodity from "../modals/EditCommodity";
+import PlaceBid from "../modals/PlaceBid";
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -21,6 +22,7 @@ export const ModalProvider = () => {
       <DeleteCommodity />
       <UserSettings />
       <EditCommodity />
+      <PlaceBid />
     </>
   )
 }
