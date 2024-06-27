@@ -8,6 +8,8 @@ import { comment } from 'postcss'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useModal } from '@/hooks/useModalStore'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 
 const formSchema = z.object({
@@ -17,6 +19,7 @@ const formSchema = z.object({
 
 
 const PlaceBid = () => {
+  const router = useRouter();
 
   const { isOpen, onClose, type } = useModal();
 
@@ -32,8 +35,16 @@ const PlaceBid = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-  const onSubmit = () => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await axios.post("/api/trade/middleman", values);
 
+      form.reset();
+      router.refresh();
+      onClose();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
