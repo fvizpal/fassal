@@ -51,10 +51,10 @@ export const login = async (
     const confirmLink = `${domain}/auth/new-verification?token=${token}`;
 
     const emailContent = {
-      subject: 'Email verification | From Krishi Bazaar',
+      subject: 'Email verification | From Fassal',
       body: `
         <div>
-          <h2>Welcome to Krishi Bazaar 🚀</h2>
+          <h2>Welcome to Fassal 🚀</h2>
           <div style="border: 1px solid #ccc; padding: 10px; background-color: #f8f8f8;">
             <h3>Email Verification</h3>
             <p>Verify your email to successfully login. Click on the following link</p>

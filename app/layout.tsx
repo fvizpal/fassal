@@ -9,7 +9,7 @@ import { auth } from "@/auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Krishi Bazaar",
+  title: "Fassal",
   description: "An online marketplace for all things Agro",
 };
 

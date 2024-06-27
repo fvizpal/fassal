@@ -67,7 +67,7 @@ const Navbar = () => {
         >
           <Image src={"/assets/images/logo1.png"} alt='logo' height={40} width={40} />
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Krishi Bazaar</span>
+          <span className="sr-only">Fassalr</span>
         </Link>
 
         {navLinks.map((link) => {
@@ -108,7 +108,7 @@ const Navbar = () => {
             >
               <Image src={"/assets/images/logo1.png"} alt='logo' height={40} width={40} />
               {/* <Package2 className="h-6 w-6" /> */}
-              <span className="sr-only">Krishi Bazaar</span>
+              <span className="sr-only">Fassal</span>
             </Link>
             {navLinks.map((link) => {
               const isActive = (pathname.includes(link.route) && link.route.length > 1) ||

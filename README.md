@@ -1,4 +1,4 @@
-<h1 align="center">KrishiBazaar</h1>
+<h1 align="center">Fassal</h1>
 <p align="center">Online Agro Marketplace platform</p>
 
 ## Getting Started
