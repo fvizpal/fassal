@@ -4,7 +4,7 @@
 ## Getting Started
 1. Clone the repository: 
 ```bash
-git clone https://github.com/fvizpal/krishi-bazaar.git
+git clone https://github.com/fvizpal/fassal.git
 ```
 
 2. Install dependencies:
