@@ -14,7 +14,7 @@ import {
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from '../ui/button'
-import { CircleUser, Menu, Package2, Search } from 'lucide-react'
+import { CircleUser, Menu, Package2, Search, Bell } from 'lucide-react'
 import { Input } from '../ui/input'
 import { ModeToggle } from './modeToggle'
 import Image from 'next/image'
@@ -139,6 +139,9 @@ const Navbar = () => {
             />
           </div>
         </form>
+        <Button variant="outline" size="icon">
+          <Bell />
+        </Button>
         <ModeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

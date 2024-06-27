@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Store = () => {
   return (
-    <Card>
+    <Card className='max-w-[20rem] m-4'>
       <CardHeader>
         <CardTitle>Shovel</CardTitle>
       </CardHeader>
