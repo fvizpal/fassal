@@ -1,13 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ArrowDown } from "lucide-react";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between w-full">
 
       {/* <!-- Hero Section --> */}
-      <section className="bg-green-600 text-white py-20 w-full">
-        <div className="container mx-auto text-center">
+      <section className=" text-white w-full">
+        <Image
+          src={"/assets/images/fassal-land1.jpg"}
+          alt="land1"
+          width={1000}
+          height={500}
+          className="object-cover w-full h-screen"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
           <h1 className="text-5xl font-bold mb-6">Welcome to Fassal</h1>
           <p className="text-xl mb-6">Connecting Farmers and Middlemen for Efficient Transactions</p>
 
@@ -16,6 +25,9 @@ export default function Home() {
           >
             ENTER
           </Link>
+        </div>
+        <div className=" absolute bottom-32 left-48 flex hover:translate-y-2">
+          <ArrowDown />
         </div>
       </section>
 
