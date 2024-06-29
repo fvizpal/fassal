@@ -21,7 +21,7 @@ export default function Home() {
           <p className="text-xl mb-6">Connecting Farmers and Middlemen for Efficient Transactions</p>
 
           <Link href={"/auth/login"}
-            className=" bg-white rounded-2xl text-primary p-5 text-center"
+            className=" bg-white rounded-2xl text-primary p-5 text-center font-bold"
           >
             ENTER
           </Link>

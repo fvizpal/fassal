@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { name, quantity, expectedPrice, imageUrl, location } = await req.json();
+    const { name, quantity, expectedPrice } = await req.json();
 
     const user = await currentUser();
 
@@ -16,7 +16,6 @@ export async function POST(req: Request) {
       data: {
         userId: user.id as string,
         name,
-        imageUrl,
         expectedPrice,
         quantity,
         sold: false,
@@ -26,7 +25,7 @@ export async function POST(req: Request) {
     return NextResponse.json(commodity)
 
   } catch (error) {
-    console.log("[TRADE_POST]", error);
+    console.log("[COMMODITY_POST]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
