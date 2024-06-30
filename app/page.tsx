@@ -1,11 +1,61 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowDown } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+
+  const [showHeader, setShowHeader] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setShowHeader(true);
+    } else {
+      setShowHeader(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between w-full">
+
+      <header
+        className={`fixed top-0 left-0 w-full h-16 z-50 bg-white shadow-md transform transition-transform duration-300 ${showHeader ? 'translate-y-0' : '-translate-y-full'
+          }`}
+      >
+        <ul className="flex bg-primary h-full p-4 justify-between items-center">
+
+          <Image
+            src={"/assets/images/Krishi-bazaar-logo.jpg"}
+            alt="logo"
+            width={25}
+            height={25}
+            className=" object-contain rounded-full"
+          />
+          <div className="flex gap-5">
+            <Link href={"/about"} className="font-semibold">
+              About
+            </Link>
+            <Link href={"/contact"} className="font-semibold">
+              Contact
+            </Link>
+          </div>
+          <div>
+            <Link href={"/auth/login"} className="bg-white font-semibold p-2 rounded-lg">
+              ENTER
+            </Link>
+          </div>
+        </ul>
+      </header>
 
       {/* <!-- Hero Section --> */}
       <section className=" text-white w-full">
@@ -16,6 +66,7 @@ export default function Home() {
           height={500}
           className="object-cover w-full h-screen"
         />
+
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
           <h1 className="text-5xl font-bold mb-6">Welcome to Fassal</h1>
           <p className="text-xl mb-6">Connecting Farmers and Middlemen for Efficient Transactions</p>
@@ -26,8 +77,10 @@ export default function Home() {
             ENTER
           </Link>
         </div>
-        <div className=" absolute bottom-32 left-48 flex hover:translate-y-2">
-          <ArrowDown />
+        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+          <div className="p-2 bg-white bg-opacity-20 rounded-full hover:animate-bounce">
+            <ArrowDown />
+          </div>
         </div>
       </section>
 

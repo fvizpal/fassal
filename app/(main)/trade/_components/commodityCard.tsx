@@ -2,8 +2,6 @@
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import React from 'react'
@@ -38,13 +36,6 @@ const CommodityCard = ({ id, imageUrl, name, }: CommodityCardProps) => {
           <Button>Save</Button>
         </CardFooter>
       </div>
-      <Image
-        src={imageUrl}
-        alt='image'
-        width={100}
-        height={23}
-        className=' h-auto object-contain'
-      />
     </Card>
 
   )
