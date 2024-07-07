@@ -4,73 +4,75 @@ import CreateButton from './_components/createButton'
 import CommodityCard from './_components/commodityCard'
 import TradeLivePrice from './_components/tradeLivePrice'
 import MobLiveTrade from './_components/MobLiveTrade'
+import { currentUser } from '@/lib/auth'
 
-const commoditiesForSale = [
-  {
-    id: "qwe43",
-    name: "ABC",
-    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-  },
-  {
-    id: "23d4",
-    name: "ABC",
-    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-  },
-  {
-    id: "q5f4",
-    name: "ABC",
-    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-  },
-  {
-    id: "3f5y",
-    name: "ABC",
-    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-  },
-  {
-    id: "2345ft",
-    name: "ABC",
-    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-  },
-  {
-    id: "34t6",
-    name: "ABC",
-    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-  },
-  {
-    id: "w454",
-    name: "ABC",
-    imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-  },
-]
+// const commoditiesForSale = [
+//   {
+//     id: "qwe43",
+//     name: "ABC",
+//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+//   },
+//   {
+//     id: "23d4",
+//     name: "ABC",
+//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+//   },
+//   {
+//     id: "q5f4",
+//     name: "ABC",
+//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+//   },
+//   {
+//     id: "3f5y",
+//     name: "ABC",
+//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+//   },
+//   {
+//     id: "2345ft",
+//     name: "ABC",
+//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+//   },
+//   {
+//     id: "34t6",
+//     name: "ABC",
+//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+//   },
+//   {
+//     id: "w454",
+//     name: "ABC",
+//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
+//   },
+// ]
 
 const Trade = async () => {
 
-  // const commoditiesForSale = await db.commodity.findMany({
-  //   where: {
-  //     userId: "userId",
-  //   }
-  // })
+  const user = await currentUser();
+
+  const commoditiesForSale = await db.commodity.findMany({
+    where: {
+      userId: user?.id,
+    }
+  })
 
   return (
-    <section
-    >
-      <div
-        className='flex '
-      >
-        <div>
-          {commoditiesForSale.map((commodity) => (
-            <div key={commodity.id}
-              className=' m-5'
-            >
+
+    <section className="grid m-5 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
+      <div className="my-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex flex-col md:col-span-2 gap-4 overflow-y-auto">
+          {commoditiesForSale.map((commodity) => {
+
+            const bidNumber = commodity.bids ? commodity.bids.length : 0;
+
+            return (
               <CommodityCard
                 id={commodity.id}
                 name={commodity.name}
-                imageUrl={commodity.imageUrl}
+                bidNumber={bidNumber}
               />
-            </div>
-          ))}
+            )
+          })}
         </div>
-        <div className='hidden  md:block md:fixed right-4'>
+        <div className="md:fixed right-2 md:col-span-1 overflow-y-auto">
           <TradeLivePrice />
         </div>
         <div className='fixed top-20 right-5 md:hidden'>
@@ -80,7 +82,7 @@ const Trade = async () => {
       <div className=''>
         <CreateButton />
       </div>
-    </section >
+    </section>
   )
 }
 

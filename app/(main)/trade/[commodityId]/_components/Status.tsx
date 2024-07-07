@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardContent,
@@ -15,6 +17,11 @@ import {
 import React from 'react'
 
 const Status = () => {
+
+  const handleStatusChange = () => {
+
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -24,7 +31,7 @@ const Status = () => {
         <div className="grid gap-6">
           <div className="grid gap-3">
             <Label htmlFor="status">Status</Label>
-            <Select>
+            <Select onValueChange={handleStatusChange}>
               <SelectTrigger id="status" aria-label="Select status">
                 <SelectValue placeholder="Select status" />
               </SelectTrigger>

@@ -6,17 +6,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 
-const CommodityDetail = () => {
+interface Props {
+  name: string | undefined
+}
+
+const CommodityDetail = ({ name }: Props) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Commodity Details</CardTitle>
+        <CardTitle>{name}</CardTitle>
         <CardDescription>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, nemo voluptatibus odio consequuntur commodi reiciendis eveniet, reprehenderit voluptatum sequi ratione itaque incidunt tempore dolorem quibusdam, modi nam optio alias. Aut?
+          Its as fresh as its get. has been harvested a month and 2 weeks back. its the mota type
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -26,7 +29,7 @@ const CommodityDetail = () => {
             <Textarea
               id="description"
               defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc."
-              className="min-h-32"
+              className="min-h-26"
             />
           </div>
         </div>

@@ -10,13 +10,13 @@ import { Input } from "../ui/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-// import { FileUpload } from "../shared/fileUploader";
+import { FileUpload } from "../shared/fileUploader";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Commodity name is required" }),
-  // imageUrl: z.string().min(1, {
-  //   message: "Community image is required."
-  // }),
+  imageUrl: z.string().min(1, {
+    message: "Community image is required."
+  }),
   quantity: z.string().min(1, { message: "Quantity is required" }),
   expectedPrice: z.string().min(1, { message: "Enter expected price" }),
 })
@@ -31,7 +31,7 @@ const CreateCommodity = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      // imageUrl: "",
+      imageUrl: "",
       quantity: "",
       expectedPrice: "",
     }
@@ -61,7 +61,7 @@ const CreateCommodity = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose} >
-      <DialogContent>
+      <DialogContent className=" overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             Create Commodity
@@ -69,7 +69,7 @@ const CreateCommodity = () => {
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            {/* <div className="flex items-center justify-center text-center">
+            <div className="flex items-center justify-center text-center">
               <FormField
                 control={form.control}
                 name="imageUrl"
@@ -85,7 +85,7 @@ const CreateCommodity = () => {
                   </FormItem>
                 )}
               />
-            </div> */}
+            </div>
             <div>
               <FormField
                 control={form.control}
