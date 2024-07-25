@@ -6,43 +6,6 @@ import TradeLivePrice from './_components/tradeLivePrice'
 import MobLiveTrade from './_components/MobLiveTrade'
 import { currentUser } from '@/lib/auth'
 
-// const commoditiesForSale = [
-//   {
-//     id: "qwe43",
-//     name: "ABC",
-//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-//   },
-//   {
-//     id: "23d4",
-//     name: "ABC",
-//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-//   },
-//   {
-//     id: "q5f4",
-//     name: "ABC",
-//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-//   },
-//   {
-//     id: "3f5y",
-//     name: "ABC",
-//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-//   },
-//   {
-//     id: "2345ft",
-//     name: "ABC",
-//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-//   },
-//   {
-//     id: "34t6",
-//     name: "ABC",
-//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-//   },
-//   {
-//     id: "w454",
-//     name: "ABC",
-//     imageUrl: "/assets/images/Krishi-bazaar-logo2.jpg"
-//   },
-// ]
 
 const Trade = async () => {
 
