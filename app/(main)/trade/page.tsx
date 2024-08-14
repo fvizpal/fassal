@@ -24,13 +24,12 @@ const Trade = async () => {
         <div className="flex flex-col md:col-span-2 gap-4 overflow-y-auto">
           {commoditiesForSale.map((commodity) => {
 
-            const bidNumber = 0;
+            // const bidNumber = commodity.bids ? commodity.bids.length : 0;
 
             return (
               <CommodityCard
                 id={commodity.id}
                 name={commodity.name}
-                bidNumber={bidNumber}
               />
             )
           })}

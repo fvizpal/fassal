@@ -10,11 +10,10 @@ import React from 'react'
 interface CommodityCardProps {
   id: string,
   name: string,
-  bidNumber: Number
 }
 
 
-const CommodityCard = ({ id, name, bidNumber }: CommodityCardProps) => {
+const CommodityCard = ({ id, name }: CommodityCardProps) => {
   const router = useRouter()
   return (
     <Card
