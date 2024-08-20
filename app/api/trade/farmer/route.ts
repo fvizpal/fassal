@@ -23,7 +23,6 @@ export async function POST(req: Request) {
     })
 
     return NextResponse.json(commodity)
-
   } catch (error) {
     console.log("[COMMODITY_POST]", error);
     return new NextResponse("Internal Error", { status: 500 });
