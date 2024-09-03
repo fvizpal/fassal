@@ -46,7 +46,7 @@ const LandNav = () => {
           </Link>
         </div>
         <div>
-          <Link href={"/auth/login"} className="bg-white font-semibold p-2 rounded-lg">
+          <Link href={"/auth/login"} className="bg-white text-slate-700 font-medium p-2 rounded-lg">
             ENTER
           </Link>
         </div>
