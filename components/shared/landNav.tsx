@@ -29,14 +29,15 @@ const LandNav = () => {
         }`}
     >
       <ul className="flex bg-primary h-full p-4 justify-between items-center">
-
-        <Image
-          src={"/assets/images/Krishi-bazaar-logo.jpg"}
-          alt="logo"
-          width={25}
-          height={25}
-          className=" object-contain rounded-full"
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/assets/images/Krishi-bazaar-logo.jpg"}
+            alt="logo"
+            width={25}
+            height={25}
+            className=" object-contain rounded-full"
+          />
+        </Link>
         <div className="flex gap-5">
           <Link href={"/about"} className="font-semibold">
             About
@@ -55,4 +56,4 @@ const LandNav = () => {
   )
 }
 
-export default LandNav
+export default LandNav 
